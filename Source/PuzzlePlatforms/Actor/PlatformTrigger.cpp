@@ -4,6 +4,7 @@
 #include "PlatformTrigger.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "PuzzlePlatforms/StaticMeshActors/MovingPlatform.h"
 
 // Sets default values
 APlatformTrigger::APlatformTrigger()
@@ -36,12 +37,19 @@ void APlatformTrigger::BeginPlay()
 
 void APlatformTrigger::OnOverlapBegin(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Activated"));
+	for (AMovingPlatform* Platform : PlatformToTrigger)
+	{
+		Platform->AddActiveTrigger();
+	}
+
 }
 
 void APlatformTrigger::OnOverlapEnd(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Disabled"));
+	for (AMovingPlatform* Platform : PlatformToTrigger)
+	{
+		Platform->RemoveActiveTrigger();
+	}
 }
 
 // Called every frame

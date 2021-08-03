@@ -7,6 +7,7 @@
 #include "PlatformTrigger.generated.h"
 
 class UBoxComponent;
+class AMovingPlatform;
 UCLASS()
 class PUZZLEPLATFORMS_API APlatformTrigger : public AActor
 {
@@ -26,6 +27,9 @@ private:
 		UBoxComponent* TriggerVolume;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 		UStaticMeshComponent* BaseMesh = nullptr;
+	UPROPERTY(EditAnywhere)
+		TArray<AMovingPlatform*> PlatformToTrigger;
+
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 	UFUNCTION()
