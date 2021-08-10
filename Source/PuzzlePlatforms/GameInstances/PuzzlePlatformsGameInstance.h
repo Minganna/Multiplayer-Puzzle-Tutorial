@@ -9,6 +9,7 @@
 /**
  * 
  */
+class UUserWidget;
 UCLASS()
 class PUZZLEPLATFORMS_API UPuzzlePlatformsGameInstance : public UGameInstance
 {
@@ -16,6 +17,9 @@ class PUZZLEPLATFORMS_API UPuzzlePlatformsGameInstance : public UGameInstance
 public:
 	UPuzzlePlatformsGameInstance(const FObjectInitializer & ObjectInitializer);
 	virtual void Init();
+
+	UFUNCTION(BlueprintCallable)
+	void LoadMenu();
 
 	UFUNCTION(Exec)
 	void Host();
@@ -25,5 +29,6 @@ public:
 private:
 UPROPERTY()
 UEngine* Engine = nullptr;
+TSubclassOf<UUserWidget> MenuClass=nullptr;
 
 };
