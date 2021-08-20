@@ -11,6 +11,7 @@
  * 
  */
 class UUserWidget;
+class UMainMenu;
 UCLASS()
 class PUZZLEPLATFORMS_API UPuzzlePlatformsGameInstance : public UGameInstance, public IMenuInterface
 {
@@ -31,5 +32,7 @@ private:
 UPROPERTY()
 UEngine* Engine = nullptr;
 TSubclassOf<UUserWidget> MenuClass=nullptr;
+
+UMainMenu *Menu = nullptr;
 
 };
