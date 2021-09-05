@@ -25,4 +25,5 @@ public:
 	//Pure Virtual function, by telling the function to be equal to 0 the code will not expect an implementation in the class
 	virtual void Host()=0;
 	virtual void Join(const FString address)=0;
+	virtual void LoadMainMenu()=0;
 };
